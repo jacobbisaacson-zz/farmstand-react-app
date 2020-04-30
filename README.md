@@ -1,11 +1,11 @@
 # Wireframes
-[Login / Register](https://i.imgur.com/ECaKN7J.jpg)
+![Login / Register](https://i.imgur.com/ECaKN7J.jpg)
 
-[Add Food Modal](https://i.imgur.com/48ElHQA.jpg)
+![Add Food Modal](https://i.imgur.com/48ElHQA.jpg)
 
-[Edit Food Modal](https://i.imgur.com/17o9IKO.jpg)
+![Edit Food Modal](https://i.imgur.com/17o9IKO.jpg)
 
-[All Foods](https://i.imgur.com/nWzh0Ry.jpg?1)
+![All Foods](https://i.imgur.com/nWzh0Ry.jpg?1)
 
 
 
