@@ -1,0 +1,16 @@
+farmer = user
+veggies = dogs
+
+
+veggie belongs to farmer
+many (veggies) to one (farmer) 
+
+veggie -
+name,
+price,
+farmer
+
+farmer -
+username,
+email,
+password
