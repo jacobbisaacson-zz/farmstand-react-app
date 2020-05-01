@@ -33,8 +33,24 @@ export default class App extends Component {
     }
   }
 
-  login = (loginInfo) => {
+  login = async (loginInfo) => {
     console.log("login() in app.js is called with the following: ", loginInfo);
+    const url = process.env.REACT_APP_API_URL + "/api/v1/farmers/login"
+    try {
+      const loginResponse = await fetch(url, {
+        credentials: 'include',
+        method: 'POST',
+        body: JSON.stringify(loginInfo),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      console.log("login response", loginResponse);
+      const loginJson = await loginResponse.json()
+      console.log("login json", loginJson);
+    } catch(err) {
+      console.error("error trying to login with API", err);
+    }
   }
 
   render() {
