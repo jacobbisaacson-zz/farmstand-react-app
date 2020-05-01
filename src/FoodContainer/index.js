@@ -33,8 +33,23 @@ export default class FoodContainer extends Component {
     }
   }
 
-  createFood = (foodToAdd) => {
+  createFood = async (foodToAdd) => {
     console.log("here's food we're adding", foodToAdd);
+    try {
+      const url = process.env.REACT_APP_API_URL + "/api/v1/foods/"
+      const createFoodResponse = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(foodToAdd)
+      })
+      console.log("createFoodResponse", createFoodResponse);
+      const createFoodJson = await createFoodResponse.json()
+      console.log("createFoodJson", createFoodJson);
+    } catch(err) {
+      console.error("error adding food", err)
+    }
   }
 
 	render() {
