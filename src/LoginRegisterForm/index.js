@@ -21,6 +21,17 @@ export default class LoginRegisterForm extends Component {
     }
   }
 
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault()
+    console.log(`Attempting to ${this.state.action.toLowerCase()} with the following credentials`, this.state);
+  }
+
 
 // below -- MAKE IT SO THAT THE ONLY THINGS YOU CAN SEE IF YOU'RE NOT LOGGED IN IS THE 
 // REGISTRATION FORM & A LINK SAYING, ALL FARMERS (ALONG WITH THE STUFF ALREADY BELOW!)
@@ -30,7 +41,7 @@ export default class LoginRegisterForm extends Component {
     return (
       <React.Fragment>
         <h2>{this.state.action} here</h2>
-        <Form>
+        <Form onSubmit={this.handleSubmit}>
           {
             this.state.action === "Register"
             &&
@@ -41,6 +52,7 @@ export default class LoginRegisterForm extends Component {
                 name="username"
                 placeholder="Enter Username: "
                 value={this.state.username}
+                onChange={this.handleChange}
               />
             </React.Fragment>
           }
@@ -50,6 +62,7 @@ export default class LoginRegisterForm extends Component {
             name="username"
             placeholder="Enter Username: "
             value={this.state.username}
+            onChange={this.handleChange}
           />
           <Label>Password:</Label>
           <Form.Input
@@ -57,6 +70,7 @@ export default class LoginRegisterForm extends Component {
             name="password"
             placeholder="Enter Password: "
             value={this.state.password}
+            onChange={this.handleChange}
           />
           <Button type="Submit">
             { this.state.action === "Login" ? "Log in" : "Sign up!" }
