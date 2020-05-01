@@ -7,7 +7,8 @@ export default class LoginRegisterForm extends Component {
 		super()
 
 		this.state = {
-			username: '',
+			name: '',
+      username: '',
 			password: '',
       action: 'Login'
 		}
@@ -66,12 +67,12 @@ export default class LoginRegisterForm extends Component {
               />
             </React.Fragment>
           }
-          <Label>Username:</Label>
+          <Label>Name:</Label>
           <Form.Input
             type="text"
-            name="username"
+            name="name"
             placeholder="Enter Username: "
-            value={this.state.username}
+            value={this.state.name}
             onChange={this.handleChange}
           />
           <Label>Password:</Label>
