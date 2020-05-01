@@ -25,9 +25,17 @@ export default class App extends Component {
           'Content-Type': 'application/json'
         }
       })
+      
       console.log("register response", registerResponse);
       const registerJson = await registerResponse.json()
       console.log("register json", registerJson);
+
+      if(registerResponse.status === 201) {
+        this.setState({
+          loggedIn: true,
+          loggedInUserUsername: registerJson.data.username
+        })
+      }
     } catch(err) {
       console.error("error trying to register with API", err);
     }
@@ -45,9 +53,17 @@ export default class App extends Component {
           'Content-Type': 'application/json'
         }
       })
+
       console.log("login response", loginResponse);
       const loginJson = await loginResponse.json()
       console.log("login json", loginJson);
+
+      if(loginResponse.status === 201) {
+        this.setState({
+          loggedIn: true,
+          loggedInUserUsername: loginJson.data.username
+        })
+      }
     } catch(err) {
       console.error("error trying to login with API", err);
     }

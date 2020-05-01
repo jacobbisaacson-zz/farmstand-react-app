@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import FoodList from '../FoodList'
 
 export default class FoodContainer extends Component {
   constructor(props) {
@@ -15,11 +16,14 @@ export default class FoodContainer extends Component {
   getFoods = async () => {
     try {
       const url = process.env.REACT_APP_API_URL + "/api/v1/foods/"
-      console.log("will fetch data from (url):", url);
-      const foodResponse = await fetch(url)
-      console.log("here's the fetch call:", foodResponse);
+      // console.log("will fetch data from (url):", url);
+      const foodResponse = await fetch(url, {
+        credentials: 'include'
+      })
+      // console.log("here's the fetch call:", foodResponse);
       const foodsJson = await foodResponse.json()
-      console.log("heres data from getFoods in json", foodsJson);
+      // console.log("heres data from getFoods in json", foodsJson);
+
       this.setState({
         foods: foodsJson.data
       })
@@ -31,7 +35,9 @@ export default class FoodContainer extends Component {
 	render() {
     console.log("this.state in render in FoodContainer", this.state);
 		return(
-			<h2>Food Container</h2>
+			<React.Fragment>
+        <FoodList foods={this.state.foods}/>
+      </React.Fragment>
 		)
 	}
 }
