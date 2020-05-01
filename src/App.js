@@ -25,7 +25,7 @@ export default class App extends Component {
           'Content-Type': 'application/json'
         }
       })
-      
+
       console.log("register response", registerResponse);
       const registerJson = await registerResponse.json()
       console.log("register json", registerJson);
@@ -58,7 +58,7 @@ export default class App extends Component {
       const loginJson = await loginResponse.json()
       console.log("login json", loginJson);
 
-      if(loginResponse.status === 201) {
+      if(loginResponse.status === 200) {
         this.setState({
           loggedIn: true,
           loggedInUserUsername: loginJson.data.username
@@ -66,6 +66,27 @@ export default class App extends Component {
       }
     } catch(err) {
       console.error("error trying to login with API", err);
+    }
+  }
+
+  logout = async () => {
+    try {
+      const url = process.env.REACT_APP_API_URL + "/api/v1/farmers/logout"
+      const logoutResponse = await fetch(url, {
+        credentials: 'include'
+      })
+      console.log("logoutResponse", logoutResponse);
+      const logoutJson = await logoutResponse.json()
+      console.log("logoutJson", logoutJson);
+
+      if(logoutResponse.status === 200) {
+        this.setState({
+          loggedIn: false,
+          loggedInUserUsername: ''
+        })
+      }
+    } catch(err) {
+      console.error("error logging out... lol...", err);
     }
   }
 
