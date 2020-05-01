@@ -33,11 +33,15 @@ export default class FoodContainer extends Component {
     }
   }
 
+  createFood = (foodToAdd) => {
+    console.log("here's food we're adding", foodToAdd);
+  }
+
 	render() {
     console.log("this.state in render in FoodContainer", this.state);
 		return(
 			<React.Fragment>
-        <NewFoodForm />
+        <NewFoodForm createFood={this.createFood}/>
         <FoodList foods={this.state.foods}/>
       </React.Fragment>
 		)

@@ -12,17 +12,30 @@ export default class NewFoodForm extends Component {
 		}
 	}
 
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault()
+    this.props.createFood(this.state)
+  }
+
 	render() {
+    console.log("this.state in NewFoodForm", this.state);
 		return (
 			<Segment>
 				<h4>Add Fruit or Veggie: </h4>
-				<Form>
+				<Form onSubmit={this.handleSubmit}>
 					<Label>Name:</Label>
 					<Form.Input
 						type="text"
 						name="name"
 						value={this.state.name}
 						placeholder="Fruit / Veggie Name: "
+            onChange={this.handleChange}
 					/>
 					<Label>Price:</Label>
 					<Form.Input
@@ -30,6 +43,7 @@ export default class NewFoodForm extends Component {
 						name="price"
 						value={this.state.price}
 						placeholder="Fruit / Veggie Price: $"
+            onChange={this.handleChange}
 					/>
 					<Label>Farmer:</Label>
 					<Form.Input
@@ -37,6 +51,7 @@ export default class NewFoodForm extends Component {
 						name="farmer"
 						value={this.state.farmer}
 						placeholder="Farmer's Name: "
+            onChange={this.handleChange}
 					/>	
 					<Button type="Submit">Add Food</Button>
 				</Form>
