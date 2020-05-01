@@ -37,7 +37,11 @@ export default class LoginRegisterForm extends Component {
       this.props.login(this.state)
     }
   }
-
+// ABOVE -- add some validation stuff -- ie
+    // Highlight blank fields fields with errors in red
+    // show the errors under or next to the field
+    // make sure password is certain length, strength, 
+    // make sure PW includes certain characters (use RegExp)
 
 // below -- MAKE IT SO THAT THE ONLY THINGS YOU CAN SEE IF YOU'RE NOT LOGGED IN IS THE 
 // REGISTRATION FORM & A LINK SAYING, ALL FARMERS (ALONG WITH THE STUFF ALREADY BELOW!)
@@ -79,7 +83,7 @@ export default class LoginRegisterForm extends Component {
             onChange={this.handleChange}
           />
           <Button type="Submit">
-            { this.state.action === "Login" ? "Log in" : "Sign up!" }
+            { this.state.action === "Login" ? "Log in" : "Sign up" }
           </Button>
         </Form>
         {
