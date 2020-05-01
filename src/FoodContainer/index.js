@@ -18,11 +18,11 @@ export default class FoodContainer extends Component {
     try {
       const url = process.env.REACT_APP_API_URL + "/api/v1/foods/"
       // console.log("will fetch data from (url):", url);
-      const foodResponse = await fetch(url, {
+      const foodsResponse = await fetch(url, {
         credentials: 'include'
       })
       // console.log("here's the fetch call:", foodResponse);
-      const foodsJson = await foodResponse.json()
+      const foodsJson = await foodsResponse.json()
       // console.log("heres data from getFoods in json", foodsJson);
 
       this.setState({
@@ -30,6 +30,27 @@ export default class FoodContainer extends Component {
       })
     } catch(err) {
       console.error("error retrieving FOOD DATA", err);
+    }
+  }
+
+  deleteFood = async (idOfFoodToDelete) => {
+    const url = process.env.REACT_APP_API_URL + "/api/v1/foods/" + idOfFoodToDelete
+    try {
+      const deleteFoodResponse = await fetch(url, {
+        method: 'DELETE',
+        credentials: 'include',
+      })
+      console.log("deleteFoodResponse", deleteFoodResponse);
+      const deleteFoodJson = await deleteFoodResponse.json()
+      console.log("deleteFoodJson", deleteFoodJson);
+
+      if(deleteFoodResponse.status === 200) {
+        this.setState({
+          foods: this.state.foods.filter(food => food.id !== idOfFoodToDelete)
+        })
+      }
+    } catch(err) {
+      console.error("error DELETING", err)
     }
   }
 
@@ -49,11 +70,16 @@ export default class FoodContainer extends Component {
       const createFoodJson = await createFoodResponse.json()
       console.log("createFoodJson", createFoodJson);
 
-      if(createFoodResponse.status === 200) {
-        this.setState({
-          foods: [...this.state.foods, createFoodJson.data]
-        })
+      if(createFoodResponse.status === 201) {
+        this.getFoods()
       }
+
+      // if(createFoodResponse.status === 200) {
+      //   this.setState({
+      //     foods: [...this.state.foods, createFoodJson.data]
+      //   })
+      //   this.getFoods()
+
     } catch(err) {
       console.error("error adding food", err)
     }
@@ -69,9 +95,20 @@ export default class FoodContainer extends Component {
         />
         <FoodList 
           foods={this.state.foods}
-          
+          deleteFood={this.deleteFood}
         />
       </React.Fragment>
 		)
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
