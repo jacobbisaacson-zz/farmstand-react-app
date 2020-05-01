@@ -6,7 +6,7 @@ export default function FoodList(props) {
   const foods = props.foods.map(food => {
     return(
       <Card.Group>
-        <Card key={food.id}>
+        <Card key={food.id} color={"blue"}>
           <Card.Content textAlign={"center"}>
             <Card.Header>{food.name}</Card.Header>
             <Card.Meta>{food.price}</Card.Meta>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import FoodList from '../FoodList'
+import NewFoodForm from '../NewFoodForm'
 
 export default class FoodContainer extends Component {
   constructor(props) {
@@ -36,6 +37,7 @@ export default class FoodContainer extends Component {
     console.log("this.state in render in FoodContainer", this.state);
 		return(
 			<React.Fragment>
+        <NewFoodForm />
         <FoodList foods={this.state.foods}/>
       </React.Fragment>
 		)
