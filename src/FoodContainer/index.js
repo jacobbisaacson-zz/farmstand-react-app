@@ -85,6 +85,10 @@ export default class FoodContainer extends Component {
     }
   }
 
+  editFood = (idOfFoodToEdit) => {
+    console.log("trying to edit food with id: ", idOfFoodToEdit);
+  }
+
 	render() {
     console.log("this.state in render in FoodContainer", this.state);
 		return(
@@ -96,6 +100,7 @@ export default class FoodContainer extends Component {
         <FoodList 
           foods={this.state.foods}
           deleteFood={this.deleteFood}
+          editFood={this.editFood}
         />
       </React.Fragment>
 		)
