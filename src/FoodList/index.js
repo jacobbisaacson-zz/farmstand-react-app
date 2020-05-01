@@ -9,7 +9,7 @@ export default function FoodList(props) {
           <Card.Content textAlign={"center"}>
             <Card.Header>{food.name}</Card.Header>
             <Card.Meta>Price: ${food.price}</Card.Meta>
-            <Card.Description>{food.name} was grown by </Card.Description>
+            <Card.Description>{food.name} was grown by {food.farmer.name}</Card.Description>
           </Card.Content>
           <Card.Content textAlign={"center"}>
               <Button 
@@ -40,4 +40,4 @@ export default function FoodList(props) {
 	)
 }
 
-
+// <Card.Description>{food.name} was grown by {food.farmer}</Card.Description>
