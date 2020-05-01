@@ -14,3 +14,5 @@ farmer -
 username,
 email,
 password
+
+nav header -- all farmers, my foods (when logged in), add foods (when logged in)

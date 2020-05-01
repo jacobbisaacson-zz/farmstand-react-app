@@ -20,12 +20,16 @@ export default class FoodContainer extends Component {
       console.log("here's the fetch call:", foodResponse);
       const foodsJson = await foodResponse.json()
       console.log("heres data from getFoods in json", foodsJson);
+      this.setState({
+        foods: foodsJson.data
+      })
     } catch(err) {
       console.error("error retrieving FOOD DATA", err);
     }
   }
 
 	render() {
+    console.log("this.state in render in FoodContainer", this.state);
 		return(
 			<h2>Food Container</h2>
 		)

@@ -1,14 +1,31 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import FoodContainer from './FoodContainer'
+import LoginRegisterForm from './LoginRegisterForm'
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Farmstand React</h1>
-      <FoodContainer />
-    </div>
-  );
+
+export default class App extends Component {
+	constructor() {
+		super()
+		this.state = {
+			loggedIn: false,
+			loggedInUserUsername: ''
+		}
+	}
+
+  render() {
+    return (
+      <div className="App">
+        {
+          this.state.loggedIn
+          ?
+          <FoodContainer />
+          :
+          <LoginRegisterForm />
+        }
+      </div>
+    )
+  }
 }
 
-export default App;
+
