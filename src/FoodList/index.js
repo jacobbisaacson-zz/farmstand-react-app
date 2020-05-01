@@ -5,27 +5,39 @@ export default function FoodList(props) {
   console.log("foodlist PROPS", props);
   const foods = props.foods.map(food => {
     return(
-      <Card.Group>
         <Card key={food.id} color={"blue"}>
           <Card.Content textAlign={"center"}>
             <Card.Header>{food.name}</Card.Header>
-            <Card.Meta>{food.price}</Card.Meta>
-            <Card.Description>{food.name} was grown by {food.farmer}</Card.Description>
+            <Card.Meta>Price: ${food.price}</Card.Meta>
+            <Card.Description>{food.name} was grown by </Card.Description>
           </Card.Content>
-          <Card.Content extra>
-            <div className='ui-two-buttons'>
-              <Button basic color='green'>Edit</Button>
-              <Button basic color='red'>Delete</Button>
-            </div>
+          <Card.Content textAlign={"center"}>
+              <Button 
+                basic 
+                color='red'
+                onClick={ () => props.deleteFood(food.id) }
+              >
+                Delete {food.name}
+              </Button>
+              <Button 
+                basic 
+                color='green'
+                onClick={ () => props.editFood(food.id) }
+              >
+                Edit {food.name}
+              </Button>
           </Card.Content>
         </Card>
-      </Card.Group>
-
     )
-
   })
 
 	return(
-		<Card.Group centered={true}>{foods}</Card.Group>
+		<Card.Group 
+      centered={true}
+    >
+      {foods}
+    </Card.Group>
 	)
 }
+
+

@@ -8,7 +8,7 @@ export default class NewFoodForm extends Component {
 		this.state = {
 			name: '',
 			price: '',
-			farmer: ''
+      farmer: this.props.loggedInUserUsername
 		}
 	}
 
@@ -20,11 +20,18 @@ export default class NewFoodForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
+    this.setState({
+      name: '',
+      price: ''
+      // farmer: ''
+    })
     this.props.createFood(this.state)
   }
 
 	render() {
     console.log("this.state in NewFoodForm", this.state);
+    console.log("this is currently logged in user", this.props.loggedInUserUsername);
+    console.log(this.state.farmer, "this.state.farmer");
 		return (
 			<Segment>
 				<h4>Add Fruit or Veggie: </h4>
@@ -45,17 +52,18 @@ export default class NewFoodForm extends Component {
 						placeholder="Fruit / Veggie Price: $"
             onChange={this.handleChange}
 					/>
-					<Label>Farmer:</Label>
-					<Form.Input
-						type="text"
-						name="farmer"
-						value={this.state.farmer}
-						placeholder="Farmer's Name: "
-            onChange={this.handleChange}
-					/>	
 					<Button type="Submit">Add Food</Button>
 				</Form>
 			</Segment>
 		)
 	}
 }
+
+          // // <Label>Farmer:</Label>
+          // <Form.Input
+          //   type="text"
+          //   name="farmer"
+          //   value={this.state.farmer}
+          //   placeholder="Farmer's Name: "
+          //   onChange={this.handleChange}
+          // />  

@@ -96,7 +96,9 @@ export default class App extends Component {
         {
           this.state.loggedIn
           ?
-          <FoodContainer />
+          <FoodContainer 
+            loggedInUserUsername={this.state.loggedInUserUsername}
+          />
           :
           <LoginRegisterForm 
             login={this.login}

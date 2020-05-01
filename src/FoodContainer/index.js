@@ -33,12 +33,13 @@ export default class FoodContainer extends Component {
     }
   }
 
-  createFood = async (foodToAdd) => {
+  createFood = async (foodToAdd, currentUser) => {
     console.log("here's food we're adding", foodToAdd);
     try {
       const url = process.env.REACT_APP_API_URL + "/api/v1/foods/"
       const createFoodResponse = await fetch(url, {
         method: 'POST',
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json'
         },
@@ -47,6 +48,12 @@ export default class FoodContainer extends Component {
       console.log("createFoodResponse", createFoodResponse);
       const createFoodJson = await createFoodResponse.json()
       console.log("createFoodJson", createFoodJson);
+
+      if(createFoodResponse.status === 200) {
+        this.setState({
+          foods: [...this.state.foods, createFoodJson.data]
+        })
+      }
     } catch(err) {
       console.error("error adding food", err)
     }
@@ -56,8 +63,14 @@ export default class FoodContainer extends Component {
     console.log("this.state in render in FoodContainer", this.state);
 		return(
 			<React.Fragment>
-        <NewFoodForm createFood={this.createFood}/>
-        <FoodList foods={this.state.foods}/>
+        <NewFoodForm 
+          createFood={this.createFood}
+          loggedInUserUsername={this.props.loggedInUserUsername}
+        />
+        <FoodList 
+          foods={this.state.foods}
+          
+        />
       </React.Fragment>
 		)
 	}

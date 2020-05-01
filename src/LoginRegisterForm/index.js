@@ -18,7 +18,7 @@ export default class LoginRegisterForm extends Component {
     if(this.state.action === "Login") {
       this.setState({ action: "Register" })
     } else {
-      this.setState({ action: "Login"})
+      this.setState({ action: "Login" })
     }
   }
 
