@@ -30,6 +30,12 @@ export default class LoginRegisterForm extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     console.log(`Attempting to ${this.state.action.toLowerCase()} with the following credentials`, this.state);
+
+    if(this.state.action === "Register") {
+      this.props.register(this.state)
+    } else {
+      this.props.login(this.state)
+    }
   }
 
 

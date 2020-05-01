@@ -13,6 +13,14 @@ export default class App extends Component {
 		}
 	}
 
+  register = (registerInfo) => {
+    console.log("register() in app.js is called with the following: ", registerInfo);
+  }
+
+  login = (loginInfo) => {
+    console.log("login() in app.js is called with the following: ", loginInfo);
+  }
+
   render() {
     return (
       <div className="App">
@@ -21,7 +29,10 @@ export default class App extends Component {
           ?
           <FoodContainer />
           :
-          <LoginRegisterForm />
+          <LoginRegisterForm 
+            login={this.login}
+            register={this.register}
+          />
         }
       </div>
     )
