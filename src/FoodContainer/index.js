@@ -109,8 +109,15 @@ export default class FoodContainer extends Component {
       const updateFoodJson = await updateFoodResponse.json()
       console.log("update food json", updateFoodJson);
 
-      this.setState({ idOfFoodToEdit: -1 })
-      this.getFoods()
+      if(updateFoodResponse.status == 200) {
+        const foods = this.state.foods
+        const indexOfFoodBeingUpdated = foods.findIndex(food => food.id == this.state.idOfFoodToEdit)
+        foods[indexOfFoodBeingUpdated] = updateFoodJson.data
+        this.setState({
+          foods: foods,
+          idOfFoodToEdit: -1
+        })
+      }
     } catch(err) {
       console.error("error updatating food", err)
     }
