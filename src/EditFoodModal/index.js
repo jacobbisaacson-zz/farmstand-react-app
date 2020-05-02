@@ -38,7 +38,7 @@ export default class EditFoodModal extends Component {
       <Modal open={true}>
         <Header>
           <h3>Edit Fruit or Veggie</h3>
-        <Header>
+        </Header>
         <Modal.Content>
           <Form onSubmit={this.handleSubmit}>
             <Label>Edit Name:</Label>
@@ -75,4 +75,3 @@ export default class EditFoodModal extends Component {
 
 
 
-  
