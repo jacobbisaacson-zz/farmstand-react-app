@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import FoodList from '../FoodList'
 import NewFoodForm from '../NewFoodForm'
+import EditFoodModal from '../EditFoodModal'
 
 export default class FoodContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      foods: []
+      foods: [],
+      idOfFoodToEdit: -1
     }
   }
 
@@ -87,6 +89,9 @@ export default class FoodContainer extends Component {
 
   editFood = (idOfFoodToEdit) => {
     console.log("trying to edit food with id: ", idOfFoodToEdit);
+    this.setState({
+      idOfFoodToEdit: idOfFoodToEdit
+    })
   }
 
 	render() {
@@ -102,6 +107,7 @@ export default class FoodContainer extends Component {
           deleteFood={this.deleteFood}
           editFood={this.editFood}
         />
+        { this.state.idOfFoodToEdit !== -1 && <EditFoodModal /> }
       </React.Fragment>
 		)
 	}
