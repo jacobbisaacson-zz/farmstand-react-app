@@ -25,17 +25,12 @@ export default class EditFoodModal extends Component {
   }
 
   render() {
-    const linkStyle = {
-      cursor: "pointer",
-      color: "blue",
-      textDecoration: "underline"
-    }
     // console.log("this.state in NewFoodForm", this.state);
     // console.log("this is currently logged in user", this.props.loggedInUserUsername);
     // // logs undefined now again
     // console.log(this.state.farmer, "this is this.state.farmer");
     return (
-      <Modal open={true}>
+      <Modal open={true} closeIcon={true} onClose={this.props.closeModal}>
         <Header>
           <h3>Edit Fruit or Veggie</h3>
         </Header>
@@ -59,7 +54,6 @@ export default class EditFoodModal extends Component {
             />
             <Modal.Actions>
               <Button type="Submit">Update Food</Button>
-              <p className="fake-link" onClick={this.props.closeModal}><small>Close Modal</small></p>
             </Modal.Actions>
           </Form>
         </Modal.Content>
@@ -67,6 +61,8 @@ export default class EditFoodModal extends Component {
       )
     }
   }
+
+  // <p className="fake-link" onClick={this.props.closeModal}><small>Close Modal</small></p>
 
 
 
