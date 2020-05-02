@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import FoodContainer from './FoodContainer'
 import LoginRegisterForm from './LoginRegisterForm'
+import Header from './Header'
 
 
 export default class App extends Component {
@@ -96,9 +97,12 @@ export default class App extends Component {
         {
           this.state.loggedIn
           ?
-          <FoodContainer 
+          <React.Fragment>
+            <Header logout={this.logout} />
+            <FoodContainer 
             loggedInUserUsername={this.state.loggedInUserUsername}
-          />
+            />
+          </React.Fragment>
           :
           <LoginRegisterForm 
             login={this.login}
