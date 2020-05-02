@@ -24,13 +24,19 @@ export default class EditFoodModal extends Component {
   }
 
   render() {
-    console.log("this.state in NewFoodForm", this.state);
-    console.log("this is currently logged in user", this.props.loggedInUserUsername);
-    // logs undefined now again
-    console.log(this.state.farmer, "this is this.state.farmer");
+    const linkStyle = {
+      cursor: "pointer",
+      color: "blue",
+      textDecoration: "underline"
+    }
+    // console.log("this.state in NewFoodForm", this.state);
+    // console.log("this is currently logged in user", this.props.loggedInUserUsername);
+    // // logs undefined now again
+    // console.log(this.state.farmer, "this is this.state.farmer");
     return (
       <Segment>
         <h4>Edit Fruit or Veggie: </h4>
+        <p style={linkStyle} onClick={this.props.closeModal}><small>Close Modal</small></p>
         <Form onSubmit={this.handleSubmit}>
           <Label>Edit Name:</Label>
           <Form.Input

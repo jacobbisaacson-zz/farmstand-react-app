@@ -123,6 +123,12 @@ export default class FoodContainer extends Component {
     }
   }
 
+  closeModal = () => {
+    this.setState({
+      idOfFoodToEdit: -1
+    })
+  }
+
 	render() {
     console.log("this.state in render in FoodContainer", this.state);
 		return(
@@ -142,6 +148,7 @@ export default class FoodContainer extends Component {
           <EditFoodModal 
             foodToEdit={this.state.foods.find((food) => food.id === this.state.idOfFoodToEdit)}
             updateFood={this.updateFood}
+            closeModal={this.closeModal}
           /> 
         }
       </React.Fragment>
