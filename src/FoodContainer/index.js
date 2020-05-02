@@ -107,7 +107,13 @@ export default class FoodContainer extends Component {
           deleteFood={this.deleteFood}
           editFood={this.editFood}
         />
-        { this.state.idOfFoodToEdit !== -1 && <EditFoodModal /> }
+        { 
+          this.state.idOfFoodToEdit !== -1 
+          &&
+          <EditFoodModal 
+            foodToEdit={this.state.foods.find((food) => food.id === this.state.idOfFoodToEdit)}
+          /> 
+        }
       </React.Fragment>
 		)
 	}

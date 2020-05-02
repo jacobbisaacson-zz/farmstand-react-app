@@ -4,17 +4,18 @@ import { Form, Button, Label, Segment } from 'semantic-ui-react'
 export default class EditFoodModal extends Component {
   constructor(props) {
     super(props)
-
+    console.log("editmodal props", props);
     this.state = {
-      name: '',
-      price: '',
-      farmer: ''
+      name: props.foodToEdit.name,
+      price: props.foodToEdit.price,
+      farmer: props.foodToEdit.farmer
     }
   }
   render() {
     console.log("this.state in NewFoodForm", this.state);
     console.log("this is currently logged in user", this.props.loggedInUserUsername);
-    console.log(this.state.farmer, "this.state.farmer");
+    // logs undefined now again
+    console.log(this.state.farmer, "this is this.state.farmer");
     return (
       <Segment>
         <h4>Edit Fruit or Veggie: </h4>
