@@ -109,9 +109,9 @@ export default class FoodContainer extends Component {
       const updateFoodJson = await updateFoodResponse.json()
       console.log("update food json", updateFoodJson);
 
-      if(updateFoodResponse.status == 200) {
+      if(updateFoodResponse.status === 200) {
         const foods = this.state.foods
-        const indexOfFoodBeingUpdated = foods.findIndex(food => food.id == this.state.idOfFoodToEdit)
+        const indexOfFoodBeingUpdated = foods.findIndex(food => food.id === this.state.idOfFoodToEdit)
         foods[indexOfFoodBeingUpdated] = updateFoodJson.data
         this.setState({
           foods: foods,
@@ -145,7 +145,8 @@ export default class FoodContainer extends Component {
         { 
           this.state.idOfFoodToEdit !== -1 
           &&
-          <EditFoodModal 
+          <EditFoodModal
+            key={this.state.idOfFoodToEdit}
             foodToEdit={this.state.foods.find((food) => food.id === this.state.idOfFoodToEdit)}
             updateFood={this.updateFood}
             closeModal={this.closeModal}

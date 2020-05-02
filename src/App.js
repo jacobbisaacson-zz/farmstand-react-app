@@ -114,6 +114,9 @@ export default class App extends Component {
   }
 }
 
+// might need to change header logout to header username={this.state.loggedInUserUsername} logout={this.logout} 
+//  -- see commit "logout functionality and header navigability"
+
 // this is where yo uneed to show nav bar with link to all farmers if NOT logged in
 // and if logged in, all the other links
 
