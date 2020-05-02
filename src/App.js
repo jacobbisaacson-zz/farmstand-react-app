@@ -3,6 +3,9 @@ import './App.css';
 import FoodContainer from './FoodContainer'
 import LoginRegisterForm from './LoginRegisterForm'
 import Header from './Header'
+import FarmerHeader from './FarmerHeader'
+import AllFarmerModal from './AllFarmerModal'
+// import all farmers? modal/ yes
 
 
 export default class App extends Component {
@@ -10,7 +13,8 @@ export default class App extends Component {
 		super()
 		this.state = {
 			loggedIn: false,
-			loggedInUserUsername: ''
+			loggedInUserUsername: '',
+      showFarmersModal: false
 		}
 	}
 
@@ -91,23 +95,64 @@ export default class App extends Component {
     }
   }
 
+  openFarmersModal = () => {
+    this.setState({
+      showFarmersModal: true
+    })
+  }
+
+  closeFarmersModal = () => {
+    this.setState({
+      showFarmersModal: false
+    })
+  }
+
+
+// conditionally render all farmers modal (right under div)
+// this.state.showmodal
+// ?
+// true
+// :
+//   null
+
+
+
   render() {
     return (
       <div className="App">
         {
-          this.state.loggedIn
+          this.state.showFarmersModal
           ?
           <React.Fragment>
-            <Header logout={this.logout} />
-            <FoodContainer 
-            loggedInUserUsername={this.state.loggedInUserUsername}
+            <AllFarmerModal
+              openFarmersModal={this.state.openFarmersModal}
+              onClick={ () => this.openFarmersModal }
             />
           </React.Fragment>
           :
-          <LoginRegisterForm 
-            login={this.login}
-            register={this.register}
+          null
+        }
+        {
+          this.state.loggedIn
+          ?
+          <React.Fragment>
+            <Header 
+              logout={this.logout} 
+            />
+            <FoodContainer 
+              loggedInUserUsername={this.state.loggedInUserUsername}
+            />
+
+          </React.Fragment>
+          :
+          <React.Fragment>
+            <FarmerHeader
           />
+            <LoginRegisterForm 
+              login={this.login}
+              register={this.register}
+          />
+          </React.Fragment>
         }
       </div>
     )

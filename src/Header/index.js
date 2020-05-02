@@ -5,7 +5,9 @@ export default function Header(props) {
   const headerStyle = {
     textAlign: "right",
     padding: "10px",
-    backgroundColor: "skyblue"
+    backgroundColor: "skyblue",
+    borderBottom: "2px solid black",
+    margin: "0 auto"
   }
 	return(
 		<nav style={headerStyle}>

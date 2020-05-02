@@ -51,8 +51,11 @@ export default class LoginRegisterForm extends Component {
   render() {
     return (
       <React.Fragment>
-        <h2>{this.state.action} here</h2>
-        <Form onSubmit={this.handleSubmit}>
+        <h2 className="h2-class">{this.state.action} here</h2>
+        <Form 
+          onSubmit={this.handleSubmit}
+          className="ui-form"
+        >
           {
             this.state.action === "Register"
             &&
@@ -90,7 +93,7 @@ export default class LoginRegisterForm extends Component {
         {
           this.state.action === "Login"
           ?
-          <p>
+          <p className="login-class">
             Want to Join? Sign up <span className="fake-link" onClick={this.switchForm}>here</span>.
           </p>
           :
@@ -107,3 +110,26 @@ export default class LoginRegisterForm extends Component {
 
 
 
+
+      // username: {
+      //   identifier: 'username',
+      //   rules: [
+      //     {
+      //       type   : 'empty',
+      //       prompt : 'Please enter a username'
+      //     }
+      //   ]
+      // },
+      // password: {
+      //   identifier: 'password',
+      //   rules: [
+      //     {
+      //       type   : 'empty',
+      //       prompt : 'Please enter a password'
+      //     },
+      //     {
+      //       type   : 'minLength[6]',
+      //       prompt : 'Your password must be at least {ruleValue} characters'
+      //     }
+      //   ]
+      // },
