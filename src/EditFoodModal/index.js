@@ -11,6 +11,18 @@ export default class EditFoodModal extends Component {
       farmer: props.foodToEdit.farmer
     }
   }
+
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault()
+    this.props.updateFood(this.state)
+  }
+
   render() {
     console.log("this.state in NewFoodForm", this.state);
     console.log("this is currently logged in user", this.props.loggedInUserUsername);
@@ -25,7 +37,6 @@ export default class EditFoodModal extends Component {
             type="text"
             name="name"
             value={this.state.name}
-            placeholder="Fruit / Veggie Name: "
             onChange={this.handleChange}
           />
           <Label>Edit Price:</Label>
@@ -33,10 +44,10 @@ export default class EditFoodModal extends Component {
             type="number"
             name="price"
             value={this.state.price}
-            placeholder="Fruit / Veggie Price: $"
             onChange={this.handleChange}
           />
-          <Button type="Submit">Add Food</Button>
+
+          <Button type="Submit">Update Food</Button>
         </Form>
       </Segment>
     )

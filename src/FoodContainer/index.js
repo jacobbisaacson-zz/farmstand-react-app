@@ -94,6 +94,28 @@ export default class FoodContainer extends Component {
     })
   }
 
+  updateFood = async (updatedFoodInfo) => {
+    const url = process.env.REACT_APP_API_URL + "/api/v1/foods/" + this.state.idOfFoodToEdit
+    try {
+      const updateFoodResponse = await fetch(url, {
+        method: 'PUT',
+        credentials: 'include',
+        body: JSON.stringify(updatedFoodInfo),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      console.log("update food response", updateFoodResponse);
+      const updateFoodJson = await updateFoodResponse.json()
+      console.log("update food json", updateFoodJson);
+
+      this.setState({ idOfFoodToEdit: -1 })
+      this.getFoods()
+    } catch(err) {
+      console.error("error updatating food", err)
+    }
+  }
+
 	render() {
     console.log("this.state in render in FoodContainer", this.state);
 		return(
@@ -112,6 +134,7 @@ export default class FoodContainer extends Component {
           &&
           <EditFoodModal 
             foodToEdit={this.state.foods.find((food) => food.id === this.state.idOfFoodToEdit)}
+            updateFood={this.updateFood}
           /> 
         }
       </React.Fragment>
