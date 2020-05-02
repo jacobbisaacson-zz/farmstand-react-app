@@ -39,7 +39,7 @@ export default class FoodContainer extends Component {
     try {
       const deleteFoodResponse = await fetch(url, {
         method: 'DELETE',
-        credentials: 'include',
+        credentials: 'include'
       })
       console.log("deleteFoodResponse", deleteFoodResponse);
       const deleteFoodJson = await deleteFoodResponse.json()

@@ -3,7 +3,6 @@ import { Card, Button } from 'semantic-ui-react'
 
 export default function FoodList(props) {
   console.log("foodlist PROPS", props);
-  console.log("foodlist state");
   const foods = props.foods.map(food => {
     return(
         <Card key={food.id} color={"blue"}>

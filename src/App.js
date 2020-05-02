@@ -4,9 +4,9 @@ import FoodContainer from './FoodContainer'
 import LoginRegisterForm from './LoginRegisterForm'
 import Header from './Header'
 import FarmerHeader from './FarmerHeader'
-import AllFarmerModal from './AllFarmerModal'
+import FarmerContainer from './FarmerContainer'
+// import AllFarmerModal from './AllFarmerModal'
 // import all farmers? modal/ yes
-
 
 export default class App extends Component {
 	constructor() {
@@ -121,18 +121,6 @@ export default class App extends Component {
     return (
       <div className="App">
         {
-          this.state.showFarmersModal
-          ?
-          <React.Fragment>
-            <AllFarmerModal
-              openFarmersModal={this.state.openFarmersModal}
-              onClick={ () => this.openFarmersModal }
-            />
-          </React.Fragment>
-          :
-          null
-        }
-        {
           this.state.loggedIn
           ?
           <React.Fragment>
@@ -154,10 +142,32 @@ export default class App extends Component {
           />
           </React.Fragment>
         }
+          <React.Fragment>
+            <FarmerContainer />
+          </React.Fragment>
       </div>
     )
   }
 }
+
+
+
+
+        // <React.Fragment>
+        //   <FarmerContainer />
+        // </React.Fragment>
+        // {
+        //   this.state.showFarmersModal
+        //   ?
+        //   <React.Fragment>
+        //     <AllFarmerModal
+        //       openFarmersModal={this.state.openFarmersModal}
+        //       onClick={ () => this.openFarmersModal }
+        //     />
+        //   </React.Fragment>
+        //   :
+        //   null
+        // }
 
 // might need to change header logout to header username={this.state.loggedInUserUsername} logout={this.logout} 
 //  -- see commit "logout functionality and header navigability"
