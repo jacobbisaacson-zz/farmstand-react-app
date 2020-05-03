@@ -32,11 +32,12 @@ export default class FarmerContainer extends Component {
 	}
 
   render() {
-    console.log("this.state in farmer container render", this.farmers);
+    console.log("this.state in farmer container render", this.state.farmers);
     // console.log(".env in render in farmers contaier", process.env);
     return(
       <React.Fragment>
-        <FarmerList farmers={this.state.farmers}/>
+        <h3 className="h2-class"> Farmer List </h3>
+          <FarmerList farmers={this.state.farmers}/>
       </React.Fragment>
     )
   }

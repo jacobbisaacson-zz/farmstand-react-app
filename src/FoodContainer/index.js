@@ -138,6 +138,7 @@ export default class FoodContainer extends Component {
         />
         <FoodList 
           foods={this.state.foods}
+          loggedInUserUsername={this.props.loggedInUserUsername}
           deleteFood={this.deleteFood}
           editFood={this.editFood}
         />
