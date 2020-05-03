@@ -82,8 +82,7 @@ export default class App extends Component {
       })
       // console.log("logoutResponse", logoutResponse);
       const logoutJson = await logoutResponse.json()
-      // console.log("logoutJson", logoutJson);
-
+      console.log("logoutJson", logoutJson);
       if(logoutResponse.status === 200) {
         this.setState({
           loggedIn: false,

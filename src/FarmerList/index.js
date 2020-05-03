@@ -7,14 +7,14 @@ export default function FarmerList(props) {
     return(
     	<Card key={farmer.id}>
         <Card.Content textAlign={"center"}>
-          <Card.Header>{farmer.name}</Card.Header>
-          <Card.Description>{farmer.name} sells foods...</Card.Description>
+          <Card.Header>Farmer: {farmer.name}</Card.Header>
+          <Card.Description>Farmer {farmer.name} sells {farmer.id}...</Card.Description>
         </Card.Content>
     	</Card>
     )
   })
 
   return(
-    <Card.Group centered={true}>{farmers}</Card.Group>
+    <Card.Group centered={true}>{farmers}{}</Card.Group>
   )
 }
