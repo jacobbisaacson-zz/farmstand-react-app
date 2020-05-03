@@ -21,7 +21,7 @@ export default class FarmerContainer extends Component {
       })
       // console.log("fetch call for farmers", farmersResponse);
       const farmersJson = await farmersResponse.json()
-      console.log("getfarmers in json", farmersJson);
+      console.log("heres data from GET FARMERS in JSON", farmersJson);
       this.setState({
         farmers: farmersJson.data
       })

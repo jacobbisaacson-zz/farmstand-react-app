@@ -2,17 +2,19 @@ import React from 'react'
 import { Card } from 'semantic-ui-react'
 
 export default function FarmerList(props) {
-  console.log("farmerlist PROPS", props);
+  console.log("FARMERLIST PROPS", props);
+  const farmers = props.farmers.map(farmer => {
+    return(
+    	<Card key={farmer.id}>
+        <Card.Content textAlign={"center"}>
+          <Card.Header>{farmer.name}</Card.Header>
+          <Card.Description>{farmer.name} sells foods...</Card.Description>
+        </Card.Content>
+    	</Card>
+    )
+  })
 
   return(
-  	<Card>
-      <Card.Content textAlign={"center"}>
-      <Card.Header>farmers name</Card.Header>
-      <Card.Description>description</Card.Description>
-      </Card.Content>
-  	</Card>
+    <Card.Group centered={true}>{farmers}</Card.Group>
   )
 }
-
-
-// <Card.Description>{food.name} was grown by {food.farmer}</Card.Description>

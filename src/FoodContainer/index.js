@@ -25,7 +25,7 @@ export default class FoodContainer extends Component {
       })
       // console.log("here's the fetch call:", foodResponse);
       const foodsJson = await foodsResponse.json()
-      // console.log("heres data from getFoods in json", foodsJson);
+      console.log("heres data from GETFOODS in JSON", foodsJson);
       this.setState({
         foods: foodsJson.data
       })
