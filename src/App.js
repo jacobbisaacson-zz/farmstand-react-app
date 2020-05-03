@@ -168,7 +168,8 @@ export default class App extends Component {
         }
           <React.Fragment>
             <FarmerContainer 
-              foods={this.state.foods}/>
+              foods={this.state.foods}
+            />
           </React.Fragment>
       </div>
     )
