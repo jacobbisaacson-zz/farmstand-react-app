@@ -36,7 +36,10 @@ export default class FarmerContainer extends Component {
     // console.log(".env in render in farmers contaier", process.env);
     return(
       <React.Fragment>
-        <FarmerList farmers={this.state.farmers}/>
+        <FarmerList 
+          farmers={this.state.farmers}
+          foods={this.props.foods}
+        />
       </React.Fragment>
     )
   }

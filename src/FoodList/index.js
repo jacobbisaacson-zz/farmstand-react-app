@@ -39,5 +39,3 @@ export default function FoodList(props) {
     </Card.Group>
 	)
 }
-
-// <Card.Description>{food.name} was grown by {food.farmer}</Card.Description>

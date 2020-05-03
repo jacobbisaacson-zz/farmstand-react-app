@@ -7,30 +7,8 @@ export default class FoodContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      foods: [],
+      // foods: [],
       idOfFoodToEdit: -1
-    }
-  }
-
-  componentDidMount() {
-    this.getFoods()
-  }
-
-  getFoods = async () => {
-    try {
-      const url = process.env.REACT_APP_API_URL + "/api/v1/foods/"
-      // console.log("will fetch data from (url):", url);
-      const foodsResponse = await fetch(url, {
-        credentials: 'include'
-      })
-      // console.log("here's the fetch call:", foodResponse);
-      const foodsJson = await foodsResponse.json()
-      console.log("heres data from GETFOODS in JSON", foodsJson);
-      this.setState({
-        foods: foodsJson.data
-      })
-    } catch(err) {
-      console.error("error retrieving FOOD DATA", err);
     }
   }
 
@@ -129,15 +107,15 @@ export default class FoodContainer extends Component {
   }
 
 	render() {
-    console.log("this.state in render in FoodContainer", this.state);
+    console.log("PROPS in render in FoodContainer", this.props);
 		return(
 			<React.Fragment>
-        <NewFoodForm 
+        <NewFoodForm
           createFood={this.createFood}
           loggedInUserUsername={this.props.loggedInUserUsername}
         />
-        <FoodList 
-          foods={this.state.foods}
+        <FoodList
+          foods={this.props.foods}
           deleteFood={this.deleteFood}
           editFood={this.editFood}
         />

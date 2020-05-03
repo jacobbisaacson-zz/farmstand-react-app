@@ -5,6 +5,7 @@ import LoginRegisterForm from './LoginRegisterForm'
 import Header from './Header'
 import FarmerHeader from './FarmerHeader'
 import FarmerContainer from './FarmerContainer'
+// import FoodList from './FoodList'
 // import AllFarmerModal from './AllFarmerModal'
 // import all farmers? modal/ yes
 
@@ -14,9 +15,32 @@ export default class App extends Component {
 		this.state = {
 			loggedIn: false,
 			loggedInUserUsername: '',
-      showFarmersModal: false
+      showFarmersModal: false,
+      foods: []
 		}
 	}
+
+  componentDidMount() {
+    this.getFoods()
+  }
+
+  getFoods = async () => {
+    try {
+      const url = process.env.REACT_APP_API_URL + "/api/v1/foods/"
+      // console.log("will fetch data from (url):", url);
+      const foodsResponse = await fetch(url, {
+        credentials: 'include'
+      })
+      // console.log("here's the fetch call:", foodResponse);
+      const foodsJson = await foodsResponse.json()
+      console.log("heres data from GETFOODS in JSON", foodsJson);
+      this.setState({
+        foods: foodsJson.data
+      })
+    } catch(err) {
+      console.error("error retrieving FOOD DATA", err);
+    }
+  }
 
   register = async (registerInfo) => {
     // console.log("register() in app.js is called with the following: ", registerInfo);
@@ -94,17 +118,17 @@ export default class App extends Component {
     }
   }
 
-  openFarmersModal = () => {
-    this.setState({
-      showFarmersModal: true
-    })
-  }
+  // openFarmersModal = () => {
+  //   this.setState({
+  //     showFarmersModal: true
+  //   })
+  // }
 
-  closeFarmersModal = () => {
-    this.setState({
-      showFarmersModal: false
-    })
-  }
+  // closeFarmersModal = () => {
+  //   this.setState({
+  //     showFarmersModal: false
+  //   })
+  // }
 
 
 // conditionally render all farmers modal (right under div)
@@ -128,6 +152,7 @@ export default class App extends Component {
             />
             <FoodContainer 
               loggedInUserUsername={this.state.loggedInUserUsername}
+              foods={this.state.foods}
             />
 
           </React.Fragment>
@@ -142,7 +167,8 @@ export default class App extends Component {
           </React.Fragment>
         }
           <React.Fragment>
-            <FarmerContainer />
+            <FarmerContainer 
+              foods={this.state.foods}/>
           </React.Fragment>
       </div>
     )
