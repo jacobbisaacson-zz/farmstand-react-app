@@ -4,7 +4,7 @@ import FoodContainer from './FoodContainer'
 import LoginRegisterForm from './LoginRegisterForm'
 import Header from './Header'
 import FarmerHeader from './FarmerHeader'
-import FarmerContainer from './FarmerContainer'
+// import FarmerContainer from './FarmerContainer'
 // import AllFarmerModal from './AllFarmerModal'
 // import all farmers? modal/ yes
 
@@ -134,6 +134,8 @@ export default class App extends Component {
           :
           <React.Fragment>
             <FarmerHeader
+              openFarmersModal={this.openFarmersModal}
+              closeFarmersModal={this.closeFarmersModal}
           />
             <LoginRegisterForm 
               login={this.login}
@@ -141,13 +143,15 @@ export default class App extends Component {
           />
           </React.Fragment>
         }
-          <React.Fragment>
-            <FarmerContainer />
-          </React.Fragment>
       </div>
     )
   }
 }
+
+
+          // <React.Fragment>
+          //   <FarmerContainer />
+          // </React.Fragment>
 
 
 

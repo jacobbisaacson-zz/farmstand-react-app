@@ -7,7 +7,8 @@ export default function FarmerHeader(props) {
     padding: "10px",
     backgroundColor: "skyblue",
     borderBottom: '2px solid black',
-    margin: "0 auto"
+    margin: "0 auto",
+    width: '98%'
   }
 		return(
 			<nav style={farmersHeaderStyle}>

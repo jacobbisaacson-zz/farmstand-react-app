@@ -5,7 +5,7 @@ import '../index.css'
 export default class EditFoodModal extends Component {
   constructor(props) {
     super(props)
-    console.log("editmodal props", props);
+    console.log("EditFoodModal PROPS", props);
     this.state = {
       name: props.foodToEdit.name,
       price: props.foodToEdit.price,

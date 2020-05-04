@@ -7,7 +7,7 @@ export default function FoodList(props) {
   console.log("PROPS.LOGGEDINUSERNAME!!", props.loggedInUserUsername);
 
   const farmerFoods = props.foods.filter(food => props.loggedInUserUsername === food.farmer.name)
-  console.log(farmerFoods, "tjhis is farmerfoods");
+  console.log(farmerFoods, "THIS IS FARMERFOODS");
   // if(props.foods.length > 0) {
   //   const testFood = props.foods.filter(food => props.loggedInUserUsername === food.farmer.name)
   //   console.log(testFood, "this is test food (filter)");

@@ -27,6 +27,12 @@ export default function AllFarmersModal(props) {
   )
 }
 
+
+// <Modal open={true} closeIcon={true} onClose={this.props.closeFarmersModal}>
+// will need this
+
+
+
   // <p className="fake-link" onClick={this.props.closeModal}><small>Close Modal</small></p>
 
 
